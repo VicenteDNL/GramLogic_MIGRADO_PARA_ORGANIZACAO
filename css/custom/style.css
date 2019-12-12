@@ -1,0 +1,41 @@
+.cor-fundo{
+    background-color: 	#A52A2A !important;
+}
+.cor-fundo1{
+    background-color: 	rgb(255, 255, 255);
+}
+.cor-fundo2{
+    background-color: 	#f8f9fa;  
+}
+.cor-fundo3{
+    background-color: rgb(192, 105, 105);
+}
+
+.cor-fundo4{
+    background-color: #D3D3D3;
+}
+
+body{
+    background-color: #F0F8FF;
+}
+
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+    color: #bd2130;
+}
+
+.nav-link.active {
+    color: #fff;
+    background-color: rgb(212, 67, 67)!important;
+}
+
+.estilo-error{
+    color: #D01F1F;
+    font-size: 12px;
+}
+
+.estilo-valido{
+    color: #27A324;
+    font-size: 12px;
+}

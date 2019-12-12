@@ -1,0 +1,275 @@
+<!DOCTYPE html> 
+<html lang="pt-br"> 
+
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+
+        <title>Analisador de expressões lógicas</title> 
+
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/custom/style.css">
+    
+        
+        <script src="/lib/require.js"></script> 
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        
+    </head> 
+
+    <body> 
+
+        <!--Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5 cor-fundo shadow-sm sticky-top">
+            <a class="navbar-brand mr-2" href="#">
+                <img src="/img/logo.png" height="50" class="d-inline-block align-top" alt="">
+                <span class="h2">GramLogic</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Projetos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Desenvolvedores</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    Gramática da Lógica Proposicional
+                </span>
+            </div>
+        </nav>
+
+
+
+        <div class="container mt-5 my-0 py-0">
+            <div class="row">
+
+                <span class="h4 text-center ml-3">Descrição da Gramática</span>
+                <div class="col-12 border-top mb-3">
+
+                    <div class=" container text-left my-3">
+                        <p>GramLogic é um software que possui uma gramática propria para geração e validação de fórmulas da Lógica Proposicional (<a class="" href="#">ler mais</a>). Logo abaixo é apresentado as regras de sintaxe para a construão da fórmula.</p>
+                    </div>
+
+                    <div class="text-center my-3">
+                        <div class="row mt-5">
+                            <div class="col-3 d-flex align-items-stretch text-left">
+                                <div class="nav flex-column nav-pills cor-fundo1 shadow-sm " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    <div class=" container cor-fundo2 text-center p-2 mb-3 shadow-sm">
+                                        <a class="h6">Regras de Construção</a>
+                                    </div>
+                                    <a class="nav-link active mx-2" id="conectivos" data-toggle="pill" href="#v-conectivos" role="tab" aria-controls="v-conectivos" aria-selected="true">Conectivos</a>
+                                    <a class="nav-link mx-2" id="negacao" data-toggle="pill" href="#v-Negacao" role="tab" aria-controls="v-Negacao" aria-selected="false">Negação</a>
+                                    <a class="nav-link mx-2" id="letra" data-toggle="pill" href="#v-Letra" role="tab" aria-controls="v-Letra" aria-selected="false">Letra Predicativas</a>
+                                    <a class="nav-link mx-2" id="conclusao" data-toggle="pill" href="#v-Conclusao" role="tab" aria-controls="v-Conclusao" aria-selected="false">Conclusão</a>
+                                    <a class="nav-link mx-2 mb-2" id="premissas" data-toggle="pill" href="#v-Premissas" role="tab" aria-controls="v-Premissas" aria-selected="false">Premissas</a>
+                                </div>
+                            </div>
+
+
+                            <div class="col-9 d-flex align-items-center">
+                                <div class="tab-content" id="v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="v-conectivos" role="tabpanel" aria-labelledby="conectivos">
+                                        <p> Os conectivos lógicos abaixo são utilizados pela gramática para representação de formulas proposicionais. Para representar uma fórmula, deve-se utilizar os conectivos listados abaixo.</p>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Operação</th>
+                                                    <th scope="col">Conectivos</th>
+                                                    <th scope="col">Estrutura Lógica</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Negação</td>
+                                                    <td>~</td>
+                                                    <td>~P</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Conjunção</td>
+                                                    <td>^</td>
+                                                    <td>P^Q</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Disjunção</td>
+                                                    <td>v</td>
+                                                    <td>PvQ</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Conjunção</td>
+                                                    <td>-></td>
+                                                    <td>P->Q</td>
+                                                </tr> 
+                                                <tr>
+                                                    <td>Bicondicional</td>
+                                                    <td><-></td>
+                                                    <td>P<->Q</td>
+                                                </tr>                                                                                                   
+                                            </tbody>
+                                        </table>  
+                                    </div>
+
+
+                                    <div class="tab-pane fade" id="v-Negacao" role="tabpanel" aria-labelledby="negacao">
+                                        <p>A negação pode ser utilizada para negar uma premissa ou uma fórmula relacionadas por conectivos. Neste caso os parênteses são utilizados para organizar a sequência de prioridade da fórmula aplicada. Ou seja, para negar uma fórmula relacionada a conectivo deve utilizar obrigatóriamente parênteses conforme apresentado na tabela abaixo.</p> 
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Negação de Predicados</th>
+                                                    <th scope="col">Negação de Predicados Relacionados por Conectivos</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>~(P)</td>
+                                                    <td>~(P->~Q)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>~P</td>
+                                                    <td>~(PvQ)</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                    <div class="tab-pane fade" id="v-Letra" role="tabpanel" aria-labelledby="letra">
+                                        <p>A gramática utiliza letras maiúsculas podendo ser qualquer letra de "A" a "Z", para representar letras predicativas da fórmula proposicional.</p>
+                                    </div>
+
+
+                                    <div class="tab-pane fade" id="v-Conclusao" role="tabpanel" aria-labelledby="conclusao">
+                                            <p>A conclusão é definida através do identificador de conclusão "|-" seguida do argumento de conclusão.</p>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">Indicador de Conclusão</th>
+                                                <th scope="col">Argumento de Conclusão</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>|-</td>
+                                                    <td>~(P->~Q)</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+
+                                    <div class="tab-pane fade" id="v-Premissas" role="tabpanel" aria-labelledby="premissas">
+                                        <p>Para definição de premissas(argumentos) é utilizado letras predicativas. Uma fórmula pode ser composta por zero ou mais premissas e obrigatóriamente uma conclusão, para definição de mais premissas deve-se utilizar a vírgula para determinar a separação das premissas.</p>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">Premissa</th>
+                                                <th scope="col">Premissas</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>P->Q</td>
+                                                    <td>P->Q,PvQ</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>(P->Q)</td>
+                                                    <td>(P->Q),(PvQ)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>~Q</td>
+                                                    <td>P->Q,~Q</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>~(P->Q)</td>
+                                                    <td>~(P->Q),Q</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+
+
+
+                </div>
+            
+                <span class="h4 text-center ml-3 mt-5">Criação e Validação da Fórmula</span>
+                <div class="col-12 border-top mb-3">
+                    <div class=" container text-left my-3">
+                        <p>Esta área é destinada para criação da sua fórmula lógica. Sê você já sabe as regras da nossa gramática siga em frente e crie sua fórmula. Caso contrário vá até a sessão superior (<a class="" href="#">clique aqui</a>). Para entender nossa gramática.</p>
+                    </div>
+                    <form>
+                        <div class="container">
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Entre com a Fórmula</label>
+                                <textarea class="form-control" id="input" rows="3"></textarea>
+                                <span class="estilo-error"id="errormsg"></span>
+                                <span class="estilo-valido"id="validamsg"></span>
+                            </div>
+                            <div>
+                                <button type="button" onclick="validar()"class="btn btn-outline-success">Validar</button>
+                                <button type="button" onclick="limpar()" class="btn btn-outline-warning">Limpar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <span class="h4 text-center ml-3 mt-5">XML Gerado</span>
+                <div class="col-12 border-top mb-3">
+                    <div class="container text-center">
+                        <p id="resul">Nenhum XML gerado</p>
+                        <a id="resultado" href="#" onclick="gerarXML()"class=""></a>
+                    </div>
+                </div>
+
+            </div>   
+        </div>
+
+
+        <div class="container-fluid my-2 cor-fundo3">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-12">
+                        <span class="h5 text-center">Sobre</span>
+                    </div>
+                    <div class="col-12 border-top pb-4">
+                        <p class="mt-3">GramLogic foi criado na disciplina de compiladores do curso de Ciência da Computação do Centro Universitário Luterano de Palmas - CEULP\ULBRA, A  partir da necessidade de uma estrutura que permitisse a criação e validação de fórmulas da lógica proposicional. É também, parte do projeto  <a href="#">Logic Live</a> que está vinculado ao Grupo de Estudos em Novas Tecnologias para processos de Ensino e Aprendizagem (GENTE).</p>
+                        <p class="mb-3">GramLogic possui uma gramática própria criada com auxílio da ferramenta <a href="#">ANTLR</a>, para ler, analizar, processar e criar um documento XML da fórmula estrutural. Visto que as fórmulas utilizadas no projeto  LogicLive são extraídas de um documento XML que segue a mesma estrutura gerada pelo software GramLogic.</p>
+                        <span class="h5 text-center">Projetos</span>   
+                        <p>....</p>  
+                        <span class="h5 text-center">Desenvolvido por</span>  
+                        <p>....</p>  
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+            
+
+      
+        <nav class="navbar sticky-bottom cor-fundo4" style="height: 200px;">
+                <!-- <a class="navbar-brand" href="#">Sticky top</a> -->
+        </nav>
+
+       
+      
+        <script type="text/javascript" src="/lib/FileSaver.min.js" ></script>
+        <script type="text/javascript" src="/js/dist/base.js"></script> 
+        <script type="text/javascript" src="/js/dist/salvarXML.js"></script> 
+        <script src="/css/bootstrap/js/bootstrap.min.js"></script>
+    </body> 
+</html> 
+    
