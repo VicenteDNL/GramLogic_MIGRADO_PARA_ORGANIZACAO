@@ -1,3 +1,6 @@
+
+
+
 function limpar() {
     $('#input').val('');
     document.getElementById("resultado").innerHTML="";
@@ -12,7 +15,7 @@ function validar() {
     var input = $('#input').val();
     if (input.length == '') {
         document.getElementById("validamsg").innerHTML="";
-        document.getElementById("errormsg").innerHTML="Por favor, forneça uma fórmula como entrada"+ "<img src='/scr/img/danger.svg' class='rounded ml-2' height=20>";
+        document.getElementById("errormsg").innerHTML="Por favor, forneça uma fórmula como entrada"+ "<img src='/img/danger.svg' class='rounded ml-2' height=20>";
         return
     }
 
