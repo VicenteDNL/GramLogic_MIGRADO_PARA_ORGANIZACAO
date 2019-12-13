@@ -23,22 +23,30 @@ function validar() {
     var antlr4 = require('./antlr4/index'); 
     var GramLogicLexer = require('./js/parser/GramLogicLexer').GramLogicLexer; 
     var GramLogicParser = require('./js/parser/GramLogicParser').GramLogicParser; 
-    var HtmlGramLogicListener = require('./js/parser/HtmlGramLogicListener').HtmlGramLogicListener;
     var HtmlErrorListener = require('./js/parser/HtmlErrorListener').HtmlErrorListener;
+    var HtmlGramLogicListener = require('./js/parser/HtmlGramLogicListener').HtmlGramLogicListener;
+    
 
 
     var chars = new antlr4.InputStream(input); 
     var lexer = new GramLogicLexer(chars); 
+
+    
     var tokens = new antlr4.CommonTokenStream(lexer); 
+ 
     var parser = new GramLogicParser(tokens); 
-
+    
     var errorListener = new HtmlErrorListener();
+    
     parser.addErrorListener(errorListener);
-
+    
 
     parser.buildParseTrees = true; 
+    
     var tree = parser.form();
+    
     var htmlGramLogic = new HtmlGramLogicListener();
+
     antlr4.tree.ParseTreeWalker.DEFAULT.walk(htmlGramLogic, tree);
 
     if (errorListener.errors.length == 0) {
@@ -52,14 +60,31 @@ function validar() {
         
 
     } else {
-        var msg = 'Não foi possível gerar e válidar a fórmula a partir da entrada\n\n';
+       
+        var msg = ' <ul>';
         for (var i = 0; i < errorListener.errors.length; i++) {
+            console.log('DGDG');
             var error = errorListener.errors[i];
-            msg += 'Linha:  ' + error.line + '\n'
-                + 'Coluna: ' + error.column + '\n'
-                + 'Erro:   ' + error.msg + '\n\n';
+            msg +='<li>';
+
+            msg += 'Linha:  ' + error.line + ','
+                + 'Coluna: ' + error.column + ','
+               
+
+                
+            var x = error.msg.indexOf('expecting')+11;
+            var tamanho = error.msg.length
+            msg += 'O valor esperado é:   ' + error.msg.substring(x, tamanho-1);
+
+            msg +="<img src='/img/danger.svg' class='rounded ml-2' height=20></li>";
+
         }
-        alert(msg);
+        msg += '</ul>';
+        console.log(msg);
+        console.log(errorListener.errors.length);
+        document.getElementById("errormsg").innerHTML=msg;
+
+        
     }
 
 }

@@ -14,6 +14,9 @@ HtmlErrorListener.prototype = Object.create(antlr4.error.ErrorListener.prototype
 HtmlErrorListener.prototype.constructor = HtmlErrorListener;
 
 HtmlErrorListener.prototype.syntaxError = function (recognizer, offendingSymbol, line, column, msg, e) {
+    
+ 
+    
     this.errors.push({
         'recognizer': recognizer,
         'offendingSymbol': offendingSymbol,

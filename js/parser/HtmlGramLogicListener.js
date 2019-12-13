@@ -4,6 +4,7 @@ var antlr4 = require('../../antlr4/index');
 var GramLogicLexer = require('../parser/GramLogicLexer'); 
 var GramLogicParser = require('../parser/GramLogicParser'); 
 var GramLogicListener = require('../parser/GramLogicListener').GramLogicListener;
+var error = require('../../antlr4/error/ErrorListener'); 
 
 HtmlGramLogicListener = function () { 
     GramLogicListener.call(this);
@@ -28,27 +29,33 @@ HtmlGramLogicListener.prototype.enterForm = function (ctx) {
 HtmlGramLogicListener.prototype.exitForm = function (ctx) { 
     var conclusao =null;
     var premissas =[];
-
-    for(var i=1; i<ctx.children.length;i++){
-        if(ctx.children[i-1].getText()=='|-'){
-            conclusao = this.xmlDoc.responseXML.createElement("CONCLUSAO");
-            conclusao.appendChild(ctx.children[i].value);
+    try {
+   
+        for(var i=1; i<ctx.children.length;i++){
+            if(ctx.children[i-1].getText()=='|-'){
+                conclusao = this.xmlDoc.responseXML.createElement("CONCLUSAO");
+                conclusao.appendChild(ctx.children[i].value);
+                
+            }
+            else if( ctx.children[i].getText()==',' || ctx.children[i].getText()=='|-'){
+                premissa = this.xmlDoc.responseXML.createElement("PREMISSA");
+                premissa.appendChild(ctx.children[i-1].value)
+                premissas.push(premissa);
+            }
             
         }
-        else if( ctx.children[i].getText()==',' || ctx.children[i].getText()=='|-'){
-            premissa = this.xmlDoc.responseXML.createElement("PREMISSA");
-            premissa.appendChild(ctx.children[i-1].value)
-            premissas.push(premissa);
+        x = this.xmlDoc.responseXML.getElementsByTagName("ARGUMENTO")[0]
+        for(var i=0; i<premissas.length;i++){
+            x.appendChild(premissas[i]);
         }
-        
-    }
-     x = this.xmlDoc.responseXML.getElementsByTagName("ARGUMENTO")[0]
-     for(var i=0; i<premissas.length;i++){
-        x.appendChild(premissas[i]);
-     }
-     x.appendChild(conclusao);
+        x.appendChild(conclusao);
 
-     this.xmlDoc = this.xmlDoc.responseXML.getElementsByTagName("ARGUMENTO")[0];
+        this.xmlDoc = this.xmlDoc.responseXML.getElementsByTagName("ARGUMENTO")[0];
+    }
+    catch (e) {
+     
+    }
+    
 
   
 }; 

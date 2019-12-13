@@ -1,7 +1,7 @@
 grammar GramLogic;
 
 
-form: (arg | (','? arg ',' arg))* '|-' arg  EOF;
+form: arg '|-' arg | (',' arg)* '|-' arg  EOF;
 
 arg: arg ('^'|'v'|'->'|'<->') arg | '~'*?PRED | '(' arg ')'| '~'*?'(' arg ')';
 
