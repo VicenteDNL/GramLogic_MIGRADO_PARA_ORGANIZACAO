@@ -61,7 +61,7 @@
                 <div class="col-12 border-top border-vermelho mb-3">
 
                     <div class=" container text-left my-3">
-                        <p>GramLogic é um software que possui uma gramática propria para geração e validação de fórmulas da Lógica Proposicional (<a class="" href="#">ler mais</a>). Logo abaixo é apresentado as regras de sintaxe para a construão da fórmula.</p>
+                        <p>GramLogic é um software que possui uma gramática propria para geração e validação de fórmulas da Lógica Proposicional (<a class="" href="#">ler mais</a>). Logo abaixo é apresentado as regras de sintaxe para a construção da fórmula.</p>
                     </div>
 
                     <div class="text-center my-3">
@@ -83,7 +83,7 @@
                             <div class="col-9  d-flex align-items-center">
                                 <div class="tab-content" id="v-pills-tabContent">
                                     <div class="tab-pane fade show active" id="v-conectivos" role="tabpanel" aria-labelledby="conectivos">
-                                        <p> Os conectivos lógicos abaixo são utilizados pela gramática para representação de formulas proposicionais. Para representar uma fórmula, deve-se utilizar os conectivos listados abaixo.</p>
+                                        <p> Os conectivos lógicos abaixo são utilizados pela gramática para representação de fórmulas proposicionais. Para representar uma fórmula, deve-se utilizar os conectivos listados abaixo.</p>
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -209,7 +209,7 @@
 
                 </div>
             
-                <span class="h4 text-center ml-3 mt-5" id="criarXML">Criação e Validação da Fórmula</span>
+                <span class="h4 text-center ml-3 mt-5" id="criarXML">Criação e validação da Fórmula</span>
                 <div class="col-12 border-top border-vermelho mb-3">
                     <div class=" container text-left my-3">
                         <p>Esta área é destinada para criação da sua fórmula lógica. Sê você já sabe as regras da nossa gramática siga em frente e crie sua fórmula. Caso contrário vá até a sessão superior (<a class="" href="#">clique aqui</a>). Para entender nossa gramática.</p>
@@ -217,10 +217,12 @@
                     <form>
                         <div class="container">
                             <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Entre com a Fórmula</label>
+                                <label class="label-estilo" for="exampleFormControlTextarea1">Entre com a fórmula proposicional</label>
                                 <textarea class="form-control" id="input" rows="3"></textarea>
                                 <span class="estilo-error"id="errormsg"></span>
                                 <span class="estilo-valido"id="validamsg"></span>
+                                <p class="estilo-errorgramatica mt-4"id="errormsggramatica"></p>
+                                <p class="estilo-errorgramatica mt-2"id="errorgramatica"></p>
                             </div>
                             <div>
                                 <button type="button" onclick="validar()"class="btn btn-outline-success">Validar</button>
@@ -237,10 +239,10 @@
         </div>
 
 
-        <div class="container-fluid estulo-fundo mb-0">
+        <div class="container-fluid estulo-fundo mb-0 mt-5">
             <div class="container pt-3 mb-0 pb-0">
                 <div class="row">
-                    <div class="col-12 text-center mt-2 mb-4">
+                    <div class="col-12 text-center mt-5 mb-4">
                         <span class="h1 cor-texto ">GRAMLOGIC</span>
                     </div>
                     <div class="col-12">
@@ -260,7 +262,11 @@
                         <span class="h4  cor-texto " id="projetos">Projetos</span>
                     </div>
                     <div class="col-12 border-top border-vermelho2  mt-1 pt-3 pb-4"> 
-                            <p class="mb-3 text-justify estilo-texto" >orem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu ante ultrices, sollicitudin erat vestibulum, tempor sapien. Donec dignissim et lorem sed vestibulum. Phasellus bibendum tortor id ultricies rutrum. Phasellus maximus dapibus elit id feugiat. Proin ut leo a justo varius tincidunt. Nam sagittis laoreet ipsum. Nulla condimentum turpis nibh</p>  
+                            <p class="mb-3 text-justify estilo-texto" >
+                                Já imaginou aprender lógica de maneira divertida através de uma plataforma de ensino gamificada?, Como o Logic Live é possível. Pois se trata de  uma ferramenta para 
+                                integrar módulos de ensino da lógica proposicional. Como por exemplo, a formalização de argumentos a validação através de tabela verdade e 
+                                árvore de refutação, bem como a dedução com o cálculo proposicional. O logic live utiliza do documento XML como ponto de partida para aplicação das atividades de ensino.
+                            </p>  
                         </div>
 
                 </div>

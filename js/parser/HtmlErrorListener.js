@@ -9,14 +9,21 @@ HtmlErrorListener = function () {
     return this;
 }
 
-HtmlErrorListener.prototype = Object.create(antlr4.error.ErrorListener.prototype);
+HtmlProxyErrorListener = function () {
 
+    
+    // antlr4.error.ProxyErrorListener.call(this);
+    this.errors = [];
+    return this;
+}
+
+
+
+HtmlErrorListener.prototype = Object.create(antlr4.error.ErrorListener.prototype);
 HtmlErrorListener.prototype.constructor = HtmlErrorListener;
 
 HtmlErrorListener.prototype.syntaxError = function (recognizer, offendingSymbol, line, column, msg, e) {
-    
- 
-    
+    console.log('entrou')
     this.errors.push({
         'recognizer': recognizer,
         'offendingSymbol': offendingSymbol,
@@ -26,5 +33,6 @@ HtmlErrorListener.prototype.syntaxError = function (recognizer, offendingSymbol,
         'e': e
     });
 };
+
 
 exports.HtmlErrorListener = HtmlErrorListener;

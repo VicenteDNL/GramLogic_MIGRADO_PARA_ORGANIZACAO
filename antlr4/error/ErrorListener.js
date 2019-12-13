@@ -13,19 +13,24 @@ function ErrorListener() {
 }
 
 ErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
+
 };
 
 ErrorListener.prototype.reportAmbiguity = function(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs) {
 };
 
 ErrorListener.prototype.reportAttemptingFullContext = function(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs) {
+
 };
 
 ErrorListener.prototype.reportContextSensitivity = function(recognizer, dfa, startIndex, stopIndex, prediction, configs) {
+
 };
 
+
 function ConsoleErrorListener() {
-	ErrorListener.call(this);
+
+    ErrorListener.call(this);
 	return this;
 }
 
@@ -63,10 +68,12 @@ function ProxyErrorListener(delegates) {
 }
 
 ProxyErrorListener.prototype = Object.create(ErrorListener.prototype);
-ProxyErrorListener.prototype.constructor = ProxyErrorListener;
 
-ProxyErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
-    this.delegates.map(function(d) { d.syntaxError(recognizer, offendingSymbol, line, column, msg, e); });
+
+
+ProxyErrorListener.prototype.constructor = ProxyErrorListener;
+ProxyErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {this.delegates.map(function(d) { 
+        d.syntaxError(recognizer, offendingSymbol, line, column, msg, e); });
 };
 
 ProxyErrorListener.prototype.reportAmbiguity = function(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs) {

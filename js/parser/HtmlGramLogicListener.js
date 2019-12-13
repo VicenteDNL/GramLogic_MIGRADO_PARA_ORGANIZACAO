@@ -53,7 +53,7 @@ HtmlGramLogicListener.prototype.exitForm = function (ctx) {
         this.xmlDoc = this.xmlDoc.responseXML.getElementsByTagName("ARGUMENTO")[0];
     }
     catch (e) {
-     
+
     }
     
 

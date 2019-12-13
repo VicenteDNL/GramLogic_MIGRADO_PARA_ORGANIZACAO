@@ -18,6 +18,11 @@
 
 }
 
+.label-estilo{
+    color: rgb(58, 58, 58);
+    font-weight: bold;
+}
+
 
 
 .cor-fundo4{
@@ -75,4 +80,9 @@ body{
 .estilo-texto1{
     color:	#C0C0C0;
     font-size: 12px;
+}
+
+.estilo-errorgramatica{
+    color: #D01F1F;
+    font-size: 16px;
 }
